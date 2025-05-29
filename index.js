@@ -36,3 +36,12 @@ app.get('/', (req, res) => {
 });
 
 app.get('/favicon.ico', (req, res) => res.status(204).end());
+
+app.get('/api/documents', async (req, res) => {
+  try {
+    const docs = await YourModel.find({});
+    res.json(docs);  // empty array [] if no docs found
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
