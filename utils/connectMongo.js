@@ -3,10 +3,7 @@ const { MongoClient } = require('mongodb');
 const connectMongo = async (uri) => {
   if (!uri) throw new Error('MongoDB URI is required');
 
-  const client = new MongoClient(uri, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  });
+  const client = new MongoClient(uri);
 
   await client.connect();
 
