@@ -19,3 +19,7 @@ app.use('/api', mongoRoutes);
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
+app.get('/', (req, res) => {
+  res.send('Backend is running');
+});
