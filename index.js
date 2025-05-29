@@ -23,3 +23,5 @@ app.listen(PORT, () => {
 app.get('/', (req, res) => {
   res.send('Backend is running');
 });
+
+app.get('/favicon.ico', (req, res) => res.status(204).end());
