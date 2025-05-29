@@ -5,9 +5,18 @@ const mongoRoutes = require('./routes/mongoRoutes');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+const allowedOrigins = ['https://ark2k.github.io'];
+
 app.use(cors({
-  origin: 'https://ARK2K.github.io',
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin.toLowerCase())) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
 }));
+
 app.use(express.json());
 
 app.get('/health', (req, res) => {
